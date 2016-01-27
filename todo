@@ -1,5 +1,7 @@
-- [ ] audit model and migration
-- [ ] specs for audit model with rspec
+- [x] audit model and migration
+- [x] specs for audit model with rspec
 - [ ] two custom auditors for dummy app
 - [ ] ui for viewing audit results
 - [ ] consider whenever for scheduling kickoff of audit
+- [x] separate AuditLog and Auditor classes. logic goes in Auditor and
+  AuditLog is just that

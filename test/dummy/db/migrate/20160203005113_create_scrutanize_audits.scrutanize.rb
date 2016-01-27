@@ -1,3 +1,4 @@
+# This migration comes from scrutanize (originally 20160127003238)
 class CreateScrutanizeAudits < ActiveRecord::Migration
   def up
     create_table :scrutanize_audit_logs do |t|

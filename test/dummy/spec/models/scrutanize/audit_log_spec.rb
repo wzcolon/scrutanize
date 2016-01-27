@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-describe Scrutanize::Audit do
-  it { should have_db_column :type }
+describe Scrutanize::AuditLog do
+  it { should have_db_column :audit_type }
   it { should have_db_column :message }
   it { should have_db_column :deleted_at }
   it { should have_db_column :created_at }
   it { should have_db_column :updated_at }
 
-  it { should validate_presence_of :type }
+  it { should validate_presence_of :audit_type }
 end

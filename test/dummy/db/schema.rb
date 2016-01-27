@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127003238) do
+ActiveRecord::Schema.define(version: 20160203005113) do
 
-  create_table "scrutanize_audits", force: :cascade do |t|
-    t.string   "type"
+  create_table "contract_dependencies", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "contract_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scrutanize_audit_logs", force: :cascade do |t|
+    t.string   "audit_type"
     t.string   "message"
     t.datetime "deleted_at"
     t.datetime "created_at"
