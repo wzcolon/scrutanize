@@ -1,0 +1,5 @@
+- [ ] audit model and migration
+- [ ] specs for audit model with rspec
+- [ ] two custom auditors for dummy app
+- [ ] ui for viewing audit results
+- [ ] consider whenever for scheduling kickoff of audit
