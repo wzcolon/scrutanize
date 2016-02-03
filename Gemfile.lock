@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     scrutanize (0.0.1)
-      rails (~> 4.2.5.1)
+      rails
 
 GEM
   remote: https://rubygems.org/
