@@ -5,3 +5,4 @@
 - [ ] consider whenever for scheduling kickoff of audit
 - [x] separate AuditLog and Auditor classes. logic goes in Auditor and
   AuditLog is just that
+- [x] save audit_type as string
