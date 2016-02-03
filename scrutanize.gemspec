@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Scrutanize::VERSION
   s.authors     = ["Zach Colon, Jonathan York"]
   s.email       = ["zcolon80@gmail.com"]
-  s.homepage    = "git@github.com:wzcolon/scrutanize.git"
+  s.homepage    = "https://github.com/wzcolon/scrutanize.git"
   s.summary     = ""
   s.description = ""
   s.license     = "MIT"
