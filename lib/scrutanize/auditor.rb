@@ -10,7 +10,7 @@ module Scrutanize
     end
 
     def log_audit_error(record)
-      Scrutanize::AuditLog.create(audit_type: record.class, message: audit_error_message)
+      Scrutanize::AuditLog.create(audit_type: record.class.to_s, message: audit_error_message)
       audit_errors << record
     end
 
