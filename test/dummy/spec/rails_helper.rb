@@ -5,9 +5,12 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
-require 'capybara/rspec'
 require 'database_cleaner'
 require 'shoulda-matchers'
+require 'capybara/rspec'
+require 'capybara/rails'
+require 'capybara/rspec/features'
+require 'capybara/poltergeist'
 require 'pry'
 
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -39,33 +42,10 @@ Shoulda::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
   config.use_transactional_fixtures = false
-
-  # RSpec Rails can automatically mix in different behaviours to your tests
-  # based on their file location, for example enabling you to call `get` and
-  # `post` in specs under `spec/controllers`.
-  #
-  # You can disable this behaviour by removing the line below, and instead
-  # explicitly tag your specs with their type, e.g.:
-  #
-  #     RSpec.describe UsersController, :type => :controller do
-  #       # ...
-  #     end
-  #
-  # The different available types are documented in the features, such as in
-  # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
-
-  # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
-  # arbitrary gems may also be filtered via:
-  # config.filter_gems_from_backtrace("gem name")
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
@@ -77,4 +57,26 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  config.after do |example|
+    Capybara.reset_sessions!
+  end
+
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, inspector: 'open', timeout: 1.day)
+  end
+
+  Capybara.configure do |config|
+    config.default_driver = :poltergeist
+    config.javascript_driver = :poltergeist
+    # config.javascript_driver = :selenium
+    config.ignore_hidden_elements = true
+    config.default_max_wait_time = 10
+  end
+
+  # include engine routes in app
+  config.include Scrutanize::Engine.routes.url_helpers
 end
+
+
+
