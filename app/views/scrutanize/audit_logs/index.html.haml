@@ -1,0 +1,18 @@
+%h1 Blah Blah Blah
+
+%table.table.table-bordered.audit_logs
+  %thead
+    %tr
+      %th Audit Type
+      %th Message
+      %th Created At
+      %th Actions
+  %tbody
+    - @audit_logs.each do |log|
+      %tr
+        %td= log.audit_type
+        %td= log.message
+        %td= log.created_at
+        %td 
+          = button_to 'Delete', destroy_audit_log_path(log), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+
