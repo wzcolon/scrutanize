@@ -11,3 +11,4 @@ gem "selenium-webdriver"
 gem "poltergeist"
 gem "database_cleaner"
 gem "puma"
+gem 'scrutanize', path: '../../'
