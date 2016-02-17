@@ -1,0 +1,39 @@
+body {
+  background-color: #A0ABA4;
+}
+
+.table-striped {
+  tbody {
+    tr:nth-of-type(odd) {
+      background-color: #C2C2CA;
+    }
+
+    tr:nth-of-type(even) {
+      background-color: #8A8AAB;
+    }
+
+    tr {
+      .btn-danger {
+        background-color: #D8A2A1;
+        border-color: #D89997;
+        color: #9E4314;
+      }
+
+      .btn-danger:hover {
+        background-color: #DC5D5B;
+        color: #584941;
+      }
+
+      .btn-warning {
+        background-color: #F3BD5C;
+        border-color: #F9B843;
+        color: #9E7511;
+      }
+
+      .btn-warning:hover {
+        background-color: #EA9B0B;
+        color: #634A0C;
+      }
+    }
+  }
+}

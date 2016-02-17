@@ -4,7 +4,7 @@ module Scrutanize
       attr_accessible :audit_type, :message
     end
 
-    default_scope -> { where(deleted_at: nil) }
+    scope :not_deleted, -> { where(deleted_at: nil) }
 
     validates :audit_type, presence: true
 
@@ -12,7 +12,7 @@ module Scrutanize
       update_attribute(:deleted_at, Time.zone.now)
     end
 
-    def undelete
+    def restore
       update_attribute(:deleted_at, nil)
     end
   end

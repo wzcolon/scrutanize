@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %title Audit Logs
+    = stylesheet_link_tag "scrutanize/application", media: "all"
+    = javascript_include_tag "scrutanize/application"
+  %body
+    .container-fluid
+      .col-md-10.col-md-offset-1
+        = yield
