@@ -3,12 +3,9 @@ require 'rails_helper'
 feature 'audit logs ui' do
 
   describe 'viewing audit logs' do
-
-    let(:contract) { Contract.create(name: 'contract name') }
+    let!(:contract) { create(:contract, :invalid) }
 
     before do
-      contract.contract_dependency.destroy # makes an invalid contract
-      contract.reload
       ContractAuditor.new.run
     end
 
