@@ -48,8 +48,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with :truncation
   end
 
   config.around(:each) do |example|
@@ -63,7 +63,7 @@ RSpec.configure do |config|
   end
 
   Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app, inspector: 'open', timeout: 1.day)
+    Capybara::Poltergeist::Driver.new(app, inspector: 'open', timeout: 30)
   end
 
   Capybara.configure do |config|
