@@ -1,11 +1,7 @@
 require 'rails_helper'
 
 describe ContractAuditor do
-  let(:contract) { Contract.create(name: 'test_contract') }
-
-  before do
-    contract.contract_dependency.destroy
-  end
+  let!(:contract) { create(:contract, :invalid) }
 
   specify 'verifies that a contract has a dependency' do
     results = described_class.new.run
