@@ -2,6 +2,14 @@ body {
   background-color: #A0ABA4;
 }
 
+h1 {
+  line-height: .6;
+}
+
+.audit-log-back-link {
+  margin-top: 10px;
+}
+
 .table-striped {
   tbody {
     tr:nth-of-type(odd) {
