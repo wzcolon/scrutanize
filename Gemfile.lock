@@ -7,6 +7,7 @@ PATH
       jquery-rails
       rails
       sass-rails (>= 3.2)
+      whenever
 
 GEM
   remote: https://rubygems.org/
@@ -53,6 +54,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.2)
+    chronic (0.10.2)
     concurrent-ruby (1.0.1)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -122,6 +124,8 @@ GEM
     tilt (2.0.2)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    whenever (0.9.4)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby

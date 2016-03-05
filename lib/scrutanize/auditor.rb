@@ -29,5 +29,12 @@ module Scrutanize
     def audit_error_message
       fail 'audit classes must specify what the error message should be'
     end
+
+    def self.run_all_audits
+      Dir[Rails.root.join('app/models/auditors/*.rb')].each do |f|
+        klass_name = f.match(/auditors\/(.+)\.rb/)[1]
+        klass_name.camelcase.constantize.new.run
+      end
+    end
   end
 end

@@ -1,9 +1,0 @@
-- [x] audit model and migration
-- [x] specs for audit model with rspec
-- [x] ui for viewing audit results
-- [x] add a back button?
-- [x] tests for viewing audit logs
-- [ ] consider whenever for scheduling kickoff of audit
-- [x] separate AuditLog and Auditor classes. logic goes in Auditor and
-  AuditLog is just that
-- [x] save audit_type as string
