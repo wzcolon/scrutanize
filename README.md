@@ -36,6 +36,9 @@ This will copy a migration to your project and create two files:
     view to redirect to a path of your choosing. By default it takes you to
     '/'.
 
+Finally, mount the engine in your `config/routes.rb`
+`mount Scrutanize::Engine => "/scrutanize"`
+
 Creating Auditors
 -----------------
 Create auditors in `app/models/auditors`
