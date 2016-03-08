@@ -3,6 +3,9 @@ Scrutanize
 
 This library assists in auditing a database for consistency.
 
+Specifically, it aids in the setup/organization of auditor classes and adds a
+simple UI for viewing audit logs.
+
 Install
 -------
 in Gemfile...
@@ -30,3 +33,40 @@ This will copy a migration to your project and create two files:
     This file allow you to easily configure the back button in the audit logs
     view to redirect to a path of your choosing. By default it takes you to
     '/'.
+
+Creating Auditors
+-----------------
+Create auditors in `app/models/auditors`
+
+Example:
+
+```ruby
+# app/models/auditors/contract_auditor.rb
+class ContractAuditor < Scrutanize::Auditor
+  def records_to_audit
+    Contract.all
+  end
+
+  def valid_record?(contract)
+    contract.contract_dependency.present?
+  end
+
+  def audit_error_message
+    "Contract does not have a dependency"
+  end
+end
+```
+
+Configure each auditor by specifying the records_to_audit, what makes a record
+valid, and the error message to log should a record fail the audit.
+
+Viewing Audit Logs
+------------------
+
+Whenever a record fails an audit, a entry is logged. These are viewable at
+'scrutanize/audit_logs' by default but you can mount the engine where you
+like.
+
+![alt text](https://github.com/wzcolon/scrutanize/raw/master/screenshot.png "Audit Log Example")
+
+Audit logs can be deleted and undeleted.
