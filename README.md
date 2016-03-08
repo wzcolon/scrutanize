@@ -6,6 +6,8 @@ This library assists in auditing a database for consistency.
 Specifically, it aids in the setup/organization of auditor classes and adds a
 simple UI for viewing audit logs.
 
+If you're using Rails 3.2.x, you must use version ~> 0.0.1 of this gem.
+
 Install
 -------
 in Gemfile...
