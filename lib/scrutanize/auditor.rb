@@ -32,7 +32,12 @@ module Scrutanize
 
     def self.run_all_audits
       Dir[Rails.root.join('app/models/auditors/*.rb')].each do |f|
-        klass_name = f.match(/auditors\/(.+)\.rb/)[1]
+        klass_name = f.match(/[^\/]+$/).to_s.gsub('.rb', '')
+        klass_name.camelcase.constantize.new.run
+      end
+
+      Dir[Rails.root.join('app/models/auditors/**/*.rb')].each do |f|
+        klass_name = f.match(/[^\/]+$/).to_s.gsub('.rb', '')
         klass_name.camelcase.constantize.new.run
       end
     end
