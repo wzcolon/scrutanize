@@ -72,3 +72,7 @@ like.
 ![alt text](https://github.com/wzcolon/scrutanize/raw/master/screenshot.png "Audit Log Example")
 
 Audit logs can be deleted and undeleted.
+
+Note: If you need to add authorization to the audit_logs views, then run
+`rails g scrutanize:views` which will copy over the controller and view files
+for editing.
