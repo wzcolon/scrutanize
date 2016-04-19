@@ -1,9 +1,9 @@
-= link_to 'Back', Scrutanize.configuration.back_link_path, class: 'btn btn-primary audit-log-back-link'
+= link_to 'Back to Reports', audit_reports_path, class: 'btn btn-primary audit-log-back-link'
 %h1 Audit Logs
-- if current_page?(audit_logs_path)
-  = link_to 'Show with deleted', all_audit_logs_path
+- if current_page?(audit_report_audit_logs_path(report))
+  = link_to 'Show with deleted', audit_report_show_all_audit_logs_path(report)
 - else
-  = link_to 'Hide deleted', audit_logs_path
+  = link_to 'Hide deleted', audit_report_path(report)
 
 %table.table.table-striped.audit-logs
   %thead
@@ -20,7 +20,7 @@
         %td= log.created_at.to_formatted_s(:long)
         %td
           - if log.deleted_at.nil?
-            = button_to 'Delete', destroy_audit_log_path(log), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+            = button_to 'Delete', audit_log_path(log), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
           - else
             = button_to 'Restore', restore_audit_log_path(log), method: :put, class: 'btn btn-warning'
 
