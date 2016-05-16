@@ -7,12 +7,12 @@ module Scrutanize
     end
 
     def show
-      session[:audit_reports_path] = audit_report_path(report)
+      session[:audit_reports_path] = audit_report_audit_logs_path(report)
       @audit_logs = AuditLog.not_deleted
     end
 
     def show_all
-      session[:audit_reports_path] = audit_reports_path
+      session[:audit_reports_path] = show_all_audit_reports_path
       @audit_reports = AuditReport.all
       render :index
     end

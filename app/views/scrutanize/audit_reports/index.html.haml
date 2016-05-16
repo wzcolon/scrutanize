@@ -16,7 +16,7 @@
     - @audit_reports.each do |report|
       %tr
         %td.view-audit-report
-          =link_to report.name, audit_report_path(report)
+          =link_to report.name, audit_report_audit_logs_path(report)
         %td= report.created_at.to_formatted_s(:long)
         - if report.fail_rate < 0.5
           %td.warning= number_to_percentage(report.fail_rate)
