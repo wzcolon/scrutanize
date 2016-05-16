@@ -12,10 +12,8 @@ Scrutanize::Engine.routes.draw do
   # get '/all_audit_reports', to: 'audit_reports#show_all'
   # delete '/audit_report/:id', to: 'audit_reports#destroy', as: :destroy_audit_report
   # put '/restore_audit_report/:id', to: 'audit_reports#restore', as: :restore_audit_report
-  #
 
-
-  resources :audit_reports, only: [:index, :show, :destroy] do
+  resources :audit_reports, only: [:index, :destroy] do
     resources :audit_logs, only: [:index]
     get 'show_all_audit_logs', to: 'audit_logs#show_all', as: :show_all_audit_logs
   end
