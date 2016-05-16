@@ -4,7 +4,7 @@ class CreateScrutanizeAuditReports < ActiveRecord::Migration
     create_table :scrutanize_audit_reports do |t|
       t.string :name
       t.datetime :deleted_at
-      t.integer :records_audited
+      t.string :records_audited
 
       t.timestamps
     end

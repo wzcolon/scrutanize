@@ -10,4 +10,8 @@ class ContractAuditor < Scrutanize::Auditor
   def audit_error_message
     "Contract does not have a dependency"
   end
+
+  def record_id(record)
+    "Contract #{record.id}"
+  end
 end
