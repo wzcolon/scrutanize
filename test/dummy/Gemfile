@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.5.1'
-gem 'sqlite3'
+gem "rails", "4.2.5.1"
+gem "sqlite3"
 gem "pry-byebug"
 gem "rspec-rails"
 gem "shoulda-matchers"
@@ -10,6 +10,7 @@ gem "capybara"
 gem "selenium-webdriver"
 gem "poltergeist"
 gem "database_cleaner"
-gem 'launchy'
+gem "launchy"
 gem "puma"
-gem 'scrutanize', path: '../../'
+gem "timecop"
+gem 'scrutanize', path: "../../"

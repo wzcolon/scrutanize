@@ -10,6 +10,7 @@
     %tr
       %th Name
       %th Created At
+      %th Records Audited
       %th Fail Rate
       %th Actions
   %tbody
@@ -18,11 +19,13 @@
         %td.view-audit-report
           =link_to report.name, audit_report_audit_logs_path(report)
         %td= report.created_at.to_formatted_s(:long)
-        - if report.fail_rate < 0.5
-          %td.warning= number_to_percentage(report.fail_rate)
+        %td= report.records_audited
+        - if report.fail_rate.nan? || report.fail_rate == 0
+          %td.text-success= number_to_percentage(0, precision: 2)
+        - elsif report.fail_rate < 0.5
+          %td.text-warning= number_to_percentage(report.fail_rate)
         - elsif report.fail_rate > 0.5
-          %td
-            %p.danger= number_to_percentage(report.fail_rate*100, precision: 2)
+          %td.text-danger= number_to_percentage(report.fail_rate*100, precision: 2)
         %td
           - if report.deleted_at.nil?
             = button_to 'Delete', audit_report_path(report), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
