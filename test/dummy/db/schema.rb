@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516235016) do
+ActiveRecord::Schema.define(version: 20160517010507) do
 
   create_table "contract_dependencies", force: :cascade do |t|
     t.string   "name"
@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20160516235016) do
 
   create_table "scrutanize_audit_logs", force: :cascade do |t|
     t.string   "audit_type"
-    t.string   "record_id"
     t.string   "message"
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "audit_report_id"
+    t.string   "record_id"
   end
 
   add_index "scrutanize_audit_logs", ["audit_report_id"], name: "index_scrutanize_audit_logs_on_audit_report_id"
