@@ -57,4 +57,27 @@ feature 'viewing audit logs' do
       end
     end
   end
+
+  describe 'pagination' do
+    before do
+      30.times do
+        create(:contract, :invalid)
+      end
+    end
+
+    specify 'defaults to 20 records per page' do
+      Scrutanize::Auditor.run_all_audits
+
+      report = Scrutanize::AuditReport.last
+      visit audit_report_audit_logs_path(report)
+
+      within 'table tbody' do
+        expect(page).to have_css('tr', count: 20)
+      end
+
+      within '.pagination' do
+        expect(page).to have_link '2', href: audit_report_audit_logs_path(audit_report_id: report.id, page: 2)
+      end
+    end
+  end
 end

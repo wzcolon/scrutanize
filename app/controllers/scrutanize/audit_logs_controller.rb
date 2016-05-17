@@ -3,12 +3,12 @@ module Scrutanize
 
     def index
       session[:audit_log_path] = audit_report_audit_logs_path(report)
-      @audit_logs = report.audit_logs.not_deleted
+      @audit_logs = report.audit_logs.not_deleted.order(:created_at).page params[:page]
     end
 
     def show_all
       session[:audit_log_path] = audit_report_show_all_audit_logs_path(report)
-      @audit_logs = report.audit_logs.all
+      @audit_logs = report.audit_logs.order(:created_at).page params[:page]
       render :index
     end
 
