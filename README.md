@@ -1,5 +1,8 @@
+
 Scrutanize
 ==========
+
+[![Code Climate](https://codeclimate.com/github/wzcolon/scrutanize/badges/gpa.svg)](https://codeclimate.com/github/wzcolon/scrutanize)
 
 This library assists in auditing a database for consistency.
 
