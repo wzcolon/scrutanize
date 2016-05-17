@@ -3,7 +3,7 @@ module Scrutanize
     include Scrutanize::Concerns::Models::DeleteableBehavior
 
     if Rails.version.to_i < 4
-      attr_accessible :audit_type, :message
+      attr_accessible :audit_type, :message, :record_id
     end
 
     paginates_per Scrutanize.configuration.defaults_per_page
