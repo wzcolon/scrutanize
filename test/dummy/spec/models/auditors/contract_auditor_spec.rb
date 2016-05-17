@@ -4,9 +4,11 @@ describe ContractAuditor do
   let!(:contract) { create(:contract, :invalid) }
 
   specify 'verifies that a contract has a dependency' do
-    results = described_class.new.run
+    report = subject.run
 
-    expect(results).to eq [contract]
+    expect(Scrutanize::AuditReport.count).to eq 1
+    expect(report.audit_logs.count).to eq 1
+    expect(report.audit_logs.first.message).to eq 'Contract does not have a dependency'
   end
 
   specify 'logs an audit error when a contract does not have a dependency' do

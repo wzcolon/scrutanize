@@ -1,0 +1,35 @@
+= link_to 'Back', Scrutanize.configuration.back_link_path, class: 'btn btn-primary audit-log-back-link'
+%h1 Audit Reports
+- if current_page?(audit_reports_path)
+  = link_to 'Show with deleted', show_all_audit_reports_path
+- else
+  = link_to 'Hide deleted', audit_reports_path
+
+%table.table.table-striped.audit-reports
+  %thead
+    %tr
+      %th Name
+      %th Created At
+      %th Records Audited
+      %th Fail Rate
+      %th Actions
+  %tbody
+    - @audit_reports.each do |report|
+      %tr
+        %td.view-audit-report
+          =link_to report.name, audit_report_audit_logs_path(report)
+        %td= report.created_at.to_formatted_s(:long)
+        %td= report.records_audited
+        - if report.fail_rate.nan? || report.fail_rate == 0
+          %td.text-success= number_to_percentage(0, precision: 2)
+        - elsif report.fail_rate < 0.5
+          %td.text-warning= number_to_percentage(report.fail_rate)
+        - elsif report.fail_rate > 0.5
+          %td.text-danger= number_to_percentage(report.fail_rate*100, precision: 2)
+        %td
+          - if report.deleted_at.nil?
+            = button_to 'Delete', audit_report_path(report), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+          - else
+            = button_to 'Restore', restore_audit_report_path(report), method: :put, class: 'btn btn-warning'
+
+=paginate @audit_reports
