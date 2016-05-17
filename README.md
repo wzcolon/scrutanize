@@ -32,9 +32,11 @@ This will copy a migration to your project and create two files:
 
   2. config/initializers/scrutanize.rb
 
-    This file allow you to easily configure the back button in the audit logs
-    view to redirect to a path of your choosing. By default it takes you to
-    '/'.
+  This file allow you to easily configure the back button in the audit
+  reports view to redirect to a path of your choosing. By default it takes
+  you to '/'.
+
+  It also has an option to override the results per page pagination.
 
 Creating Auditors
 -----------------

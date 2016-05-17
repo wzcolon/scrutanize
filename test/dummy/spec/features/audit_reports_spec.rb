@@ -84,4 +84,26 @@ feature 'audit logs ui' do
       expect(page).to have_button 'Delete'
     end
   end
+
+  describe 'pagination' do
+    before do
+      30.times do
+        ContractAuditor.new.run
+      end
+
+      visit audit_reports_path
+    end
+
+    specify 'defaults to 20 records per page' do
+      within 'table tbody' do
+        expect(page).to have_css('tr', count: 20)
+      end
+    end
+
+    specify 'has links to subsequent records' do
+      within '.pagination' do
+        expect(page).to have_link '2', href: audit_reports_path(page: 2)
+      end
+    end
+  end
 end
